@@ -1,0 +1,8 @@
+.fondo{
+    background: #000, url("/imagenes/Fragance.png");
+    background-size: cover;
+    overflow: hidden;
+    background-position: center;
+    background-image: url("/Imagenes/Fragance.png");
+    
+}

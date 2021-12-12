@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+}
+
+.contenedor {
+  width: 100%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- HEADER ----------*/
+.header {
+  padding-top: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 70px rgba(102, 102, 102, 0.2);
+  height: 1500px;
+  max-height: 130vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.encabezado-uno {
+  flex: 0 1 auto;
+}
+
+.encabezado {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 40px;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.encabezado h1 {
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.encabezado i {
+  color: #000;
+}
+
+.menu {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu a {
+  padding: 10px;
+  color: #000;
+  letter-spacing: 1px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  transition: 1s ease all;
+  font-size: 16px;
+}
+
+.menu a:hover {
+  color: #858585;
+}
+
+/* ---------- Mi Articulo ----------*/
+
+.mi-articulo {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  background-image: url("/Administrador/img/fondo4.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- Articulo ----------*/
+.articulo {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
