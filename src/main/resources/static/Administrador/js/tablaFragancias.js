@@ -2,65 +2,68 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-    referencia: /^([\da-zA-Z\-\.\_\,\#]){1,40}$/,
-    marca: /^[a-zA-ZÀ-ÿ0-9\_\-]{1,16}$/,
-    categoria: /^[\d\D\s]+$/,
-    presentacion: /^[\d\D\s]+$/,
-    descripcion: /^[\d\D\s]+$/,
-    disponibilidad: /^[a-z]{4,5}$/,
-    precio: /^([\d])+$/,
-    cantidad: /^([\d])+$/,
-    fotografia: /^[\d\D\s]+$/
+    reference: /^([\da-zA-Z\-\.\_\,\#]){1,40}$/,
+    brand: /^[a-zA-ZÀ-ÿ0-9\_\-]{1,16}$/,
+    category: /^[\d\D\s]+$/,
+    presentation: /^[\d\D\s]+$/,
+    description: /^[\d\D\s]+$/,
+    availability: /^[a-z]{4,5}$/,
+    price: /^([\d])+$/,
+    quantity: /^([\d])+$/,
+    photography: /^[\d\D\s]+$/
 }
 
 const campos = {
-    referencia: false,
-    marca: false,
-    categoria: false,
-    presentacion: false,
-    descripcion: false,
-    disponibilidad: false,
-    precio: false,
-    cantidad: false,
-    fotografia: false
+    reference: false,
+    brand: false,
+    category: false,
+    presentation: false,
+    description: false,
+    availability: false,
+    price: false,
+    quantity: false,
+    photography: false
 };
+
+var actualizar = false;
+var actReference;
 
 const validarFormulario = (e) => {
     switch (e.target.name) {
-        case "referencia":
-            validarCampo(expresiones.referencia, e.target, 'referencia');
+        case "reference":
+            validarCampo(expresiones.reference, e.target, 'reference');
             break;
 
-        case "marca":
-            validarCampo(expresiones.marca, e.target, 'marca');
+        case "brand":
+            validarCampo(expresiones.brand, e.target, 'brand');
             break;
 
-        case "categoria":
-            validarCampo(expresiones.categoria, e.target, 'categoria');
+        case "category":
+            validarCampo(expresiones.category, e.target, 'category');
             break;
 
-        case "presentacion":
-            validarCampo(expresiones.presentacion, e.target, 'presentacion');
+        case "presentation":
+            validarCampo(expresiones.presentation, e.target, 'presentation');
             break;
 
-        case "descripcion":
-            validarCampo(expresiones.descripcion, e.target, 'descripcion');
+        case "description":
+            validarCampo(expresiones.description, e.target, 'description');
             break;
 
-        case "disponibilidad":
-            validarCampo(expresiones.disponibilidad, e.target, 'disponibilidad');
+        case "availability":
+            validarCampo(expresiones.availability, e.target, 'availability');
             break;
 
-        case "precio":
-            validarCampo(expresiones.precio, e.target, 'precio');
+        case "price":
+            validarCampo(expresiones.price, e.target, 'price');
             break;
 
-        case "cantidad":
-            validarCampo(expresiones.cantidad, e.target, 'cantidad');
+        case "quantity":
+            validarCampo(expresiones.quantity, e.target, 'quantity');
             break;
 
-        case "fotografia":
-            validarCampo(expresiones.fotografia, e.target, 'fotografia');
+        case "photography":
+            validarCampo(expresiones.photography, e.target, 'photography');
             break;
     };
 }
@@ -87,34 +90,42 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
     // Cuando el formulario esta correcto
-    if (campos.referencia && campos.marca && campos.categoria && campos.presentacion && campos.descripcion && campos.disponibilidad && campos.precio && campos.cantidad && campos.fotografia == true) {
-        var elemento = {
-            reference: $("#referencia").val(),
-            brand: $("#marca").val(),
-            category: $("#categoria").val(),
-            presentation: $("#presentacion").val(),
-            description: $("#descripcion").val(),
-            availability: $("#disponibilidad").val(),
-            price: $("#precio").val(),
-            quantity: $("#cantidad").val(),
-            photography: $("#fotografia").val()
-        }
-
+    if (actualizar == true) {
+        actualizarItem(actReference);
+        document.getElementById("reference").disabled = true;
         formulario.reset();
         document.querySelectorAll('#formulario input').forEach((icono) => {
             icono.classList.remove('is-valid');
+            icono.classList.remove('is-invalid');
         });
-        registro(elemento);
-
     } else {
-        // Ejecutar mensaje de error
-        Swal.fire({
-            icon: 'error',
-            title: 'Formulario incorrecto',
-            text: 'Por favor rellenar el formulario correctamente'
-        });
-    }
+        if (campos.reference && campos.brand && campos.category && campos.presentation && campos.description && campos.availability && campos.price && campos.quantity && campos.photography == true) {
+            var elemento = {
+                reference: $("#reference").val(),
+                brand: $("#brand").val(),
+                category: $("#category").val(),
+                presentation: $("#presentation").val(),
+                description: $("#description").val(),
+                availability: $("#availability").val(),
+                price: $("#price").val(),
+                quantity: $("#quantity").val(),
+                photography: $("#photography").val()
+            }
+            formulario.reset();
+            document.querySelectorAll('#formulario input').forEach((icono) => {
+                icono.classList.remove('is-valid');
+            });
+            registro(elemento);
 
+        } else {
+            // Ejecutar mensaje de error
+            Swal.fire({
+                icon: 'error',
+                title: 'Formulario incorrecto',
+                text: 'Por favor rellenar el formulario correctamente'
+            });
+        }
+    }
 });
 
 /* ----- -----  Funcion para mostrar los datos de los productos en la tabla ----- -----  */
@@ -143,7 +154,7 @@ function pintarRespuesta(respuesta) {
         myTable += "<td>" + respuesta[i].price + "</td>";
         myTable += "<td>" + respuesta[i].quantity + "</td>";
         myTable += "<td>" + respuesta[i].photography + "</td>";
-        myTable += "<td> <button class='button btn btn-primary text-center mt-2' onclick='editarProducto(" + JSON.stringify(respuesta[i].reference) + ")'>Editar</button>";
+        myTable += "<td> <button class='button btn btn-primary text-center mt-2' onclick='editarProducto(" + JSON.stringify(respuesta[i].reference) + "), desactivar()'>Editar</button>";
         myTable += "<td> <button class='button btn btn-primary text-center mt-2' onclick='borrarProducto(" + JSON.stringify(respuesta[i].reference) + ")'>Eliminar</button>";
         myTable += "</tr>";
     }
@@ -151,12 +162,18 @@ function pintarRespuesta(respuesta) {
     $("#resultado3").html(myTable);
 }
 
-/* ----- -----  Funcion para editar los datos de los productos por referencia ----- -----  */
+function desactivar() {
+    document.getElementById('reference').disabled = true;
+}
+
+function activar() {
+    document.getElementById('reference').disabled = false;
+}
+
+/* ----- -----  Funcion para editar los datos de los productos por reference ----- -----  */
 function editarProducto(reference) {
-    document.getElementById(`mi-boton`).classList.add('d-none')
-    if ($('#actualizar').length == 0) {
-        $("#accion").append('<button class="button btn btn-primary text-center mt-2" id="actualizar" onclick="actualizarItem(' + reference + ')">Actualizar</button>');
-    }
+    actualizar = true;
+    actReference = reference;
 
     $.ajax({
         dataType: 'json',
@@ -164,15 +181,15 @@ function editarProducto(reference) {
         type: 'GET',
 
         success: function (response) {
-            $("#referencia").val(response.reference);
-            $("#marca").val(response.brand);
-            $("#categoria").val(response.category);
-            $("#presentacion").val(response.presentation);
-            $("#descripcion").val(response.description);
-            $("#disponibilidad").val(response.availability);
-            $("#precio").val(response.price);
-            $("#cantidad").val(response.quantity);
-            $("#fotografia").val(response.photography);
+            $("#reference").val(response.reference);
+            $("#brand").val(response.brand);
+            $("#category").val(response.category);
+            $("#presentation").val(response.presentation);
+            $("#description").val(response.description);
+            $("#availability").val(response.availability);
+            $("#price").val(response.price);
+            $("#quantity").val(response.quantity);
+            $("#photography").val(response.photography);
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -186,7 +203,7 @@ function editarProducto(reference) {
     });
 }
 
-/* ----- -----  Funcion para eliminar los datos de los productos por referencia ----- -----  */
+/* ----- -----  Funcion para eliminar los datos de los productos por reference ----- -----  */
 function borrarProducto(reference) {
     let myData = {
         reference: reference
@@ -249,6 +266,7 @@ function borrarProducto(reference) {
 
 /* ----- -----  Funcion Ajax para registrar un nuevo producto ----- -----  */
 function registro(elemento) {
+    console.log(elemento)
 
     $.ajax({
         type: 'POST',
@@ -258,6 +276,7 @@ function registro(elemento) {
         url: "http://localhost:8080/api/fragance/new",
 
         success: function (response) {
+            console.log(response);
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -286,14 +305,14 @@ function actualizarItem(reference) {
 
     var elemento = {
         reference: reference,
-        brand: $("#marca").val(),
-        category: $("#categoria").val(),
-        presentation: $("#presentacion").val(),
-        description: $("#descripcion").val(),
-        availability: $("#disponibilidad").val(),
-        price: $("#precio").val(),
-        quantity: $("#cantidad").val(),
-        photography: $("#fotografia").val()
+        brand: $("#brand").val(),
+        category: $("#category").val(),
+        presentation: $("#presentation").val(),
+        description: $("#description").val(),
+        availability: $("#availability").val(),
+        price: $("#price").val(),
+        quantity: $("#quantity").val(),
+        photography: $("#photography").val()
     }
 
     $.ajax({
@@ -304,7 +323,6 @@ function actualizarItem(reference) {
         type: 'PUT',
 
         success: function (response) {
-
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -312,7 +330,8 @@ function actualizarItem(reference) {
                 showConfirmButton: false,
                 timer: 1500
             });
-            window.location.reload();
+            activar();
+            traerInformacionProductos();
         },
 
         error: function (jqXHR, textStatus, errorThrown) {

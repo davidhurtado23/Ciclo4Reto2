@@ -32,16 +32,10 @@
                 </nav>
             </div>
             <div class="articulo">
-                
+
                 <!-- Lista de productos -->
                 <div class="container mt-3">
                     <div class="mx-auto col-sm-16 main-section" id="myTab" role="tablist">
-                        <ul class="nav nav-tabs justify-content-end">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab"
-                                    aria-controls="list" aria-selected="false">List</a>
-                            </li>
-                        </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
                                 <div class="card">
@@ -53,7 +47,6 @@
                                             <table id="userList" class="table table-bordered table-hover table-striped">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <th scope="col">Id</th>
                                                         <th scope="col">Identificacion</th>
                                                         <th scope="col">Nombre</th>
                                                         <th scope="col">Direccion</th>
@@ -69,8 +62,7 @@
                                                 </thead>
                                                 <tbody id="resultado3">
 
-                                                </tbody>>
-
+                                                </tbody>
                                             </table>
                                         </div>
 
@@ -91,24 +83,11 @@
                                 <h2 class="fw-bold text-center pt-2 mb-4">Registrar usuarios</h2>
                                 <form class="needs-validation" id="formulario" novalidate>
 
-                                    <!-- ID -->
-                                    <div class="mb-3">
-                                        <label class="form-label">Id</label>
-                                        <input type="number" class="form-control" name="id" id="id"
-                                            aria-describedby="validationServer05Feedback" required>
-                                        <div class="valid-feedback">
-                                            ¡Id valida!
-                                        </div>
-                                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                            Id incorrecto
-                                        </div>
-                                    </div>
-
                                     <!-- IDENTIFICACION -->
                                     <div class="mb-3">
                                         <label class="form-label">Identificación</label>
-                                        <input type="number" class="form-control" name="identificacion"
-                                            id="identificacion" aria-describedby="validationServer05Feedback" required>
+                                        <input type="number" class="form-control" name="identification"
+                                            id="identification" aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Identificacion valida!
                                         </div>
@@ -121,7 +100,7 @@
                                     <!-- NOMBRE -->
                                     <div class="mb-3">
                                         <label class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" id="nombre"
+                                        <input type="text" class="form-control" name="name" id="name"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Nombre correcto!
@@ -136,7 +115,7 @@
                                     <!-- DIRECCION -->
                                     <div class="mb-3">
                                         <label class="form-label">Dirección</label>
-                                        <input type="text" class="form-control" name="direccion" id="direccion"
+                                        <input type="text" class="form-control" name="address" id="address"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Dirección valida!
@@ -150,7 +129,7 @@
                                     <!-- CELULAR -->
                                     <div class="mb-3">
                                         <label class="form-label">Celular</label>
-                                        <input type="number" class="form-control" name="telefono" id="telefono"
+                                        <input type="number" class="form-control" name="cellPhone" id="cellPhone"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Telefono correcto!
@@ -166,7 +145,7 @@
                                     <!-- CORREO ELECTRONICO -->
                                     <div class="mb-3">
                                         <label for="validationServer02" class="form-label">Correo electronico</label>
-                                        <input type="email" class="form-control" name="correo" id="correo"
+                                        <input type="email" class="form-control" name="email" id="email"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Correo electronico valido!
@@ -180,7 +159,7 @@
                                     <!-- CONTRASEÑA -->
                                     <div class="mb-3">
                                         <label for="validationServer02" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" name="contraseña" id="contraseña"
+                                        <input type="password" class="form-control" name="password" id="password"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Contraseña valida!
@@ -195,7 +174,7 @@
                                     <!-- CONTRASEÑA 2 -->
                                     <div class="mb-3">
                                         <label for="validationServer01" class="form-label">Confirmar contraseña</label>
-                                        <input type="password" class="form-control" name="contraseña2" id="contraseña2"
+                                        <input type="password" class="form-control" name="password2" id="password2"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Correcto!
@@ -208,7 +187,7 @@
                                     <!-- ZONA -->
                                     <div class="mb-3">
                                         <label class="form-label">Zona</label>
-                                        <input type="text" class="form-control" name="zona" id="zona"
+                                        <input type="text" class="form-control" name="zone" id="zone"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Zona valida!
@@ -221,7 +200,7 @@
                                     <!-- TIPO DE USUARIO -->
                                     <div class="mb-3">
                                         <label class="form-label">Tipo de usuario</label>
-                                        <input type="text" class="form-control" name="tipoUsuario" id="tipoUsuario"
+                                        <input type="text" class="form-control" name="type" id="type"
                                             aria-describedby="validationServer05Feedback" required>
                                         <div class="valid-feedback">
                                             ¡Tipo de usuario correcto!
