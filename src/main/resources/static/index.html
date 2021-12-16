@@ -34,48 +34,46 @@
             </div>
             <div class="col bg-white p-5 rounded-end">
                 <div class="text-center">
-                    <a href="#" class="fw-bold text-center pt-5 mb-3 text-decoration-none">Zorrillo
+                    <a href="#" class="fw-bold text-center pt-5 mb-3 link-secondary text-decoration-none">Zorrillo
                         LTDA</a>
                 </div>
                 <h2 class="fw-bold text-center pt-2 mb-4">Iniciar Sesión</h2>
+
                 <!----- LOGIN ----->
                 <form action="index.html" method="get" class="needs-validation" id="formulario" novalidate>
-                    <!-- onsubmit="return validar()" -->
+                    
                     <!-- CORREO ELECTRONICO -->
                     <div class="mb-4">
-                        <label for="validationServer01" class="form-label">Correo electronico</label>
-                        <input type="email" class="form-control" name="correo" id="correo"
-                            aria-describedby="validationServer05Feedback" required>
+                        <label for="correo" class="form-label">Correo electronico</label>
+                        <input type="email" class="form-control" name="correo" id="correo" required>
                         <div class="valid-feedback">
                             ¡Correo electronico valido!
                         </div>
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        <div class="invalid-feedback">
                             El correo electronico solo puede contener letras, numeros, puntos, guiones y guion bajo
                         </div>
                     </div>
 
                     <!-- PASSWORD -->
                     <div class="mb-4">
-                        <label for="validationServer02" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="clave" id="clave"
-                            aria-describedby="validationServer05Feedback" required>
+                        <label for="clave" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="clave" id="clave" required>
                         <div class="valid-feedback">
                             ¡Contraseña valida!
                         </div>
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                        <div class="invalid-feedback">
                             La contraseña debe tener de 4 a 12 digitos, no debe contener espacios o caracteres
                             especiales.
                         </div>
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="button btn btn-primary">Iniciar Sesión</button>
+                        <button type="submit" class="button btn btn-dark text-white">Iniciar Sesión</button>
                     </div>
 
                 </form>
             </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

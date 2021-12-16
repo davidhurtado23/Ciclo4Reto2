@@ -86,7 +86,7 @@ function ingresar(correo, clave) {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                location.href = "/Administrador/tablaAdmin.html"
+                location.href = "/src/main/resources/static/Administrador/tablaAdmin.html"
             }
         },
 
